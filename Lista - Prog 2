@@ -1,0 +1,66 @@
+#include <iostream>
+
+using namespace std;
+
+int funcprimo(int n, int primo) {
+    int v[primo];
+    int cont = 0;
+    bool check = false;
+
+    for (int i = 2; i < n; i++) {
+        for (int j = 2; j < i; j++) {
+            if (i % j == 0)
+                check = true;
+
+        }
+
+        if (check == false) {
+            v[cont] = i;
+            cont++;
+        }
+
+        check = false;
+    }
+
+    for (int i = 0; i < primo; i++) {
+        for (int j = 0; j < primo; j++) {
+            if ((v[i] + v[j]) == n) {
+                cout << "Os valores primos que somados dão " << n << " são " << v[i] << " e " << v[j];
+                return 0;
+            }
+
+        }
+
+    }
+
+    return 0;
+
+}
+
+int main()
+{
+    int n, primo = 0;
+    bool check = false;
+    cout << "Insira um número: " << endl;
+    cin >> n;
+
+    if (n%2 == 0) {
+        for (int i = 2; i < n; i++) {
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0)
+                    check = true;
+
+            }
+
+            if (check == false)
+                primo++;
+
+            check = false;
+        }
+        int f = funcprimo(n, primo);
+    } else {
+        //
+    }
+
+    return 0;
+}
